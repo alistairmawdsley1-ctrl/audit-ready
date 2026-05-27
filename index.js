@@ -242,8 +242,8 @@ function Landing({ onStart }) {
         <p className="text-xs tracking-widest uppercase text-zinc-400 mb-8">AI Regulatory Compliance</p>
 
         <h1
-          className="font-light tracking-tight text-black mb-8 leading-none"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 600 }}
+          className="font-semibold tracking-tight text-black mb-8 leading-none"
+          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 500 }}
         >
           Know your exposure.<br />
           Before regulators<br />
