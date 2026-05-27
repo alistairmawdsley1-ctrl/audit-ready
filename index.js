@@ -243,7 +243,7 @@ function Landing({ onStart }) {
 
         <h1
           className="font-light tracking-tight text-black mb-8 leading-none"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400 }}
+          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 500 }}
         >
           Know your exposure.<br />
           Before regulators<br />
