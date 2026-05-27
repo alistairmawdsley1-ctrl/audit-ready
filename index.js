@@ -243,8 +243,7 @@ function Landing({ onStart }) {
 
         <h1
           className="font-semibold tracking-tight text-black mb-8 leading-none"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 500 }}
-        >
+          style={{ fontSize: "clamp(2.8rem, 8vw, 5rem)", fontWeight: 700 }}        >
           Know your exposure.<br />
           Before regulators<br />
           find it.
@@ -406,12 +405,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Editorial+New:ital,wght@0,200;0,400;1,200&family=Suisse+Int%27l:wght@300;400;500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <style jsx global>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+        html { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         body { background: #ffffff; color: #000000; }
       `}</style>
 
