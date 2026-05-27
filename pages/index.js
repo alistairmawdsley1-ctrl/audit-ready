@@ -401,10 +401,10 @@ export default function Home() {
             <div className="max-w-2xl w-full mx-auto text-center space-y-8">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-4" style={{ color: "#1e3a5f" }}>
-                  Which AI regulations apply to your project?
+                  AI regulation in the uk is fragmented, complex, and already in force.
                 </h1>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Answer a short series of questions about your AI deployment. We map your answers to the UK regulatory regimes that apply — ICO, FCA, CMA, MHRA, EHRC, DSIT, and the EU AI Act — and show you why each one is triggered.
+                  Know your AI regulatory exposure in 5 minutes.
                 </p>
               </div>
 
