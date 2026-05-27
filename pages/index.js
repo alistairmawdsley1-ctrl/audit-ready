@@ -151,7 +151,7 @@ function RegimeCard({ regime }) {
             {expanded && (
               <div className="mt-3 space-y-2">
                 {regime.citations.map((c, i) => (
-                  <div key={i} className="text-xs bg-gray-50 rounded-lg px-3 py-2 border border-gray-100">
+                  <div key={i} className="text-xs bg-gray-50 rounded-lg px-3 py-2 border border-amber-300">
                     <span className="font-medium text-gray-700">{c.document}</span>
                     {c.reference && (
                       <span className="text-gray-500">, {c.reference}</span>
@@ -229,9 +229,9 @@ function Results({ results, onRestart }) {
       </div>
 
       {/* Disclaimer */}
-      <div className="bg-gray-50 rounded-xl border border-gray-200 px-6 py-4">
+      <div className="bg-gray-50 rounded-xl border border-amber-300 px-6 py-4">
         <p className="text-xs text-gray-500 leading-relaxed">
-          <strong className="text-gray-700">Disclaimer:</strong> This output is regulatory guidance based on published frameworks and your self-reported answers. It is not legal advice. The citation store is human-verified against source documents but regulation changes — always verify obligations against the current published guidance from the relevant regulator. If your situation is complex, consult a qualified solicitor or compliance professional.
+          <strong className="text-amber-800">Disclaimer:</strong> This output is regulatory guidance based on published frameworks and your self-reported answers. It is not legal advice. The citation store is human-verified against source documents but regulation changes — always verify obligations against the current published guidance from the relevant regulator. If your situation is complex, consult a qualified solicitor or compliance professional.
         </p>
       </div>
 
