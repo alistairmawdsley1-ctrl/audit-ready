@@ -290,12 +290,10 @@ function Landing({ onStart }) {
       {/* Footer */}
       <div className="border-t border-zinc-200 py-6 flex items-center justify-between flex-wrap gap-2">
         <p className="text-xs text-zinc-300 tracking-wide">Regulatory guidance only. Not legal advice.</p>
-        <p className="text-xs text-zinc-300">
-          By{" "}
-          <a href="https://mawdsleyadvisory.com" className="hover:text-black transition-colors">
-            Mawdsley Advisory
-          </a>
-        </p>
+        <div className="flex items-center gap-4">
+          <a href="/privacy" className="text-xs text-zinc-300 hover:text-black transition-colors">Privacy Notice</a>
+          <a href="https://mawdsleyadvisory.com" className="text-xs text-zinc-300 hover:text-black transition-colors">Mawdsley Advisory</a>
+        </div>
       </div>
     </div>
   );
