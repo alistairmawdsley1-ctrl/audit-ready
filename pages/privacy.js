@@ -37,7 +37,7 @@ export default function Privacy() {
               <h2 className="text-base font-medium text-black mb-3">What data we collect and why</h2>
 
               <h3 className="font-medium text-black mb-2 mt-4">During the assessment</h3>
-              <p>When you complete the AI regulatory assessment, you provide information about your business and AI deployment. This may include your business sector, a description of your AI system, and details about how it is used.</p>
+              <p>When you complete the AI regulatory assessment, you provide information about your business and AI deployment. Your answers are processed by Claude, an AI model developed by Anthropic, to generate the assessment questions and map your responses to relevant regulatory regimes. Anthropic processes this data as a sub-processor on our behalf. You can read Anthropic's privacy policy at anthropic.com/privacy. This may include your business sector, a description of your AI system, and details about how it is used.</p>
               <p className="mt-3">This information is used only to generate your assessment results. It is not stored after your session ends. We do not link it to your identity unless you choose to contact us or purchase a report.</p>
               <p className="mt-3">We process this data on the basis of legitimate interests: providing you with the regulatory guidance you have requested.</p>
 
@@ -52,7 +52,7 @@ export default function Privacy() {
 
             <section>
               <h2 className="text-base font-medium text-black mb-3">What we do not do</h2>
-              <p>We do not sell your data. We do not share it with third parties except as described above. We do not use it for marketing without your consent. We do not make automated decisions about you based on your data.</p>
+              <p>We do not sell your data. We do not share it with third parties except as described above. We do not use it for marketing without your consent. We do not make automated decisions about you as an individual. The assessment generates regulatory guidance about your AI deployment, not decisions about you personally. If you wish to query or discuss your results, contact us at alistair@mawdsleyadvisory.com.</p>
             </section>
 
             <section>
