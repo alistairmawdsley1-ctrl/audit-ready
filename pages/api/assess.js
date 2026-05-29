@@ -37,6 +37,8 @@ RULES:
 - Do not explain what you are trying to find out or name the slots.
 - Stop once all required and relevant conditional slots are filled.
 - If an answer is ambiguous, ask a brief clarifying follow-up before moving on.
+- Never use em dashes in questions. Use commas or restructure the sentence instead.
+- Use British English spelling throughout, for example organise not organize, analyse not analyze.
 
 OUTPUT FORMAT — respond with ONLY valid JSON, no markdown, no code blocks, no additional text.
 
