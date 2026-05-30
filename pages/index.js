@@ -198,7 +198,7 @@ function Results({ results, onRestart }) {
           href={STRIPE_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200"
+          className="inline-block text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-sm"
         >
           Get Full Report — £49
         </a>
