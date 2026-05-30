@@ -1,0 +1,18 @@
+<svg width="480" height="80" viewBox="0 0 480 80" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Valar Audit</title>
+  <desc>Valar Audit wordmark</desc>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600&display=swap');
+    </style>
+  </defs>
+  <text
+    font-family="'Plus Jakarta Sans', sans-serif"
+    font-weight="600"
+    font-size="64"
+    fill="#111111"
+    letter-spacing="-2"
+    x="0"
+    y="66"
+  >Valar Audit</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Valar Audit</title>
+  <desc>Valar Audit Open Graph image</desc>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap');
+    </style>
+  </defs>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <text
+    font-family="'Plus Jakarta Sans', sans-serif"
+    font-weight="600"
+    font-size="120"
+    fill="#111111"
+    letter-spacing="-4"
+    x="600"
+    y="310"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >Valar Audit</text>
+  <text
+    font-family="'Plus Jakarta Sans', sans-serif"
+    font-weight="400"
+    font-size="32"
+    fill="#888888"
+    letter-spacing="0.5"
+    x="600"
+    y="390"
+    text-anchor="middle"
+  >AI Regulatory Compliance for UK SMEs</text>
+</svg>
