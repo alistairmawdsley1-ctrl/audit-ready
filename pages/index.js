@@ -13,9 +13,9 @@ const STATUS = {
 };
 
 const RISK_CONFIG = {
-  low:    { label: "Low Risk",    bg: "bg-emerald-100", text: "text-emerald-800", border: "border-emerald-300", dot: "bg-emerald-500" },
-  medium: { label: "Medium Risk", bg: "bg-amber-100",   text: "text-amber-800",   border: "border-amber-300",   dot: "bg-amber-500" },
-  high:   { label: "High Risk",   bg: "bg-red-100",     text: "text-red-800",     border: "border-red-300",     dot: "bg-red-500" },
+  low:    { label: "low risk",    bg: "bg-emerald-100", text: "text-emerald-800", border: "border-emerald-300", dot: "bg-emerald-500" },
+  medium: { label: "medium risk", bg: "bg-amber-100",   text: "text-amber-800",   border: "border-amber-300",   dot: "bg-amber-500" },
+  high:   { label: "high risk",   bg: "bg-red-100",     text: "text-red-800",     border: "border-red-300",     dot: "bg-red-500" },
 };
 
 const REGULATOR_COLORS = {
@@ -90,7 +90,7 @@ function QuestionCard({ question, onSubmit, isLoading, progress }) {
             disabled={!answer.trim() || isLoading}
             className="text-xs tracking-widest uppercase font-medium text-black border border-black px-6 py-3 hover:bg-black hover:text-white transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            {isLoading ? "Processing" : "Continue"}
+            {isLoading ? "processing" : "continue"}
           </button>
         </div>
       </form>
@@ -99,7 +99,7 @@ function QuestionCard({ question, onSubmit, isLoading, progress }) {
 }
 
 function RiskBadge({ level }) {
-  const labels = { low: "Low Risk", medium: "Medium Risk", high: "High Risk" };
+  const labels = { low: "low risk", medium: "medium risk", high: "high risk" };
   return (
     <span className="text-xs tracking-widest uppercase font-medium border border-black px-3 py-1.5">
       {labels[level] || "Unknown"}
@@ -126,7 +126,7 @@ function RegimeCard({ regime }) {
             onClick={() => setExpanded(e => !e)}
             className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors"
           >
-            {expanded ? "Hide sources" : "Show sources"}
+            {expanded ? "hide sources" : "show sources"}
           </button>
           {expanded && (
             <div className="mt-4 space-y-3">
@@ -171,7 +171,7 @@ function Results({ results, onRestart }) {
     <div className="w-full max-w-2xl mx-auto">
       <div className="mb-12">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-xs tracking-widest uppercase text-zinc-400">Assessment complete</h2>
+          <h2 className="text-xs tracking-widest uppercase text-zinc-400">assessment complete</h2>
           <RiskBadge level={riskLevel} />
         </div>
         <p className="text-3xl font-light tracking-tight text-black mt-6 mb-4">
@@ -189,7 +189,7 @@ function Results({ results, onRestart }) {
       </div>
 
       <div className="border-t border-black mt-12 pt-12 mb-12">
-        <p className="text-xs tracking-widest uppercase text-zinc-400 mb-4">Full report</p>
+        <p className="text-xs tracking-widest uppercase text-zinc-400 mb-4">full report</p>
         <p className="text-2xl font-light tracking-tight text-black mb-2">Specific obligations. Exact citations. Priority actions.</p>
         <p className="text-sm text-zinc-500 mb-8 leading-relaxed">
           A downloadable PDF with every obligation mapped to its source document, recommended actions in priority order, and a summary you can share with legal counsel or your board.
@@ -209,7 +209,7 @@ function Results({ results, onRestart }) {
 
       <div className="border border-zinc-200 p-6 mb-12">
         <p className="text-xs text-zinc-500 leading-relaxed">
-          <span className="font-medium text-zinc-700">Important disclaimer: </span>
+          <span className="font-medium text-zinc-700">important disclaimer: </span>
           This output is regulatory guidance based on published frameworks and your self-reported answers. It is not legal advice. The citation store is human-verified against source documents but regulation changes. Always verify obligations against current published guidance from the relevant regulator. You should consult a qualified solicitor or compliance professional before acting on these results. Questions about your results? Contact us at alistair@mawdsleyadvisory.com.
         </p>
       </div>
@@ -257,7 +257,7 @@ function Landing({ onStart }) {
 
       {/* Hero */}
       <div className="flex-1 flex flex-col justify-center py-24 max-w-4xl">
-        <p className="text-xs tracking-widest uppercase text-zinc-400 mb-8">AI Regulatory Compliance</p>
+        <p className="text-xs tracking-widest uppercase text-zinc-400 mb-8">AI regulatory compliance</p>
 
         <h1
           className="font-light tracking-tight text-black mb-8 leading-none"
@@ -285,9 +285,9 @@ function Landing({ onStart }) {
         {/* Three tiles */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-t border-zinc-200">
           {[
-            { label: "Free assessment", desc: "Guided questions, one at a time. Instant results." },
-            { label: "Human-verified citations", desc: "Every obligation linked to its source document." },
-            { label: "Full report £49", desc: "Specific obligations, priority actions, downloadable PDF." },
+            { label: "free assessment", desc: "Guided questions, one at a time. Instant results." },
+            { label: "human-verified citations", desc: "Every obligation linked to its source document." },
+            { label: "full report £49", desc: "Specific obligations, priority actions, downloadable PDF." },
           ].map(({ label, desc }) => (
             <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 pr-8">
               <p className="text-xs tracking-widest uppercase font-medium text-black mb-2">{label}</p>
@@ -299,7 +299,7 @@ function Landing({ onStart }) {
 
       {/* Regulator row */}
       <div className="border-t border-zinc-200 py-6 flex flex-wrap items-center gap-6">
-        <span className="text-xs tracking-widest uppercase text-zinc-300">Covers</span>
+        <span className="text-xs tracking-widest uppercase text-zinc-300">covers</span>
         {["ICO", "FCA", "CMA", "MHRA", "EHRC", "DSIT", "EU AI Act"].map(r => (
           <span key={r} className="text-xs tracking-widest uppercase text-zinc-400">{r}</span>
         ))}
@@ -309,7 +309,7 @@ function Landing({ onStart }) {
       <div className="border-t border-zinc-200 py-6 flex items-center justify-between flex-wrap gap-2">
         <p className="text-xs text-zinc-300 tracking-wide">Regulatory guidance only. Not legal advice.</p>
         <div className="flex items-center gap-4">
-          <a href="/privacy" className="text-xs text-zinc-300 hover:text-black transition-colors">Privacy Notice</a>
+          <a href="/privacy" className="text-xs text-zinc-300 hover:text-black transition-colors">privacy notice</a>
           <a href="https://mawdsleyadvisory.com" className="text-xs text-zinc-300 hover:text-black transition-colors">Mawdsley Advisory</a>
         </div>
       </div>
@@ -437,7 +437,7 @@ export default function Home() {
       {(status === STATUS.LOADING || status === STATUS.MAPPING) && (
         <div className="min-h-screen flex items-center justify-center">
           <p className="text-xs tracking-widest uppercase text-zinc-400 animate-pulse">
-            {status === STATUS.MAPPING ? "Mapping your exposure" : "Processing"}
+            {status === STATUS.MAPPING ? "mapping your exposure" : "processing"}
           </p>
         </div>
       )}
@@ -445,7 +445,7 @@ export default function Home() {
       {status === STATUS.ASSESSING && (
         <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
           <div className="flex items-center justify-between py-8 border-b border-zinc-200 mb-16">
-            <span className="text-xs tracking-widest uppercase font-medium"><img src="/logo-navbar.svg" alt="Valar Audit" style={{ height: '32px' }} /></span>
+            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#111111' }}>Valar Audit</span>
             <button onClick={restart} className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors">
               Exit
             </button>
@@ -464,7 +464,7 @@ export default function Home() {
       {status === STATUS.COMPLETE && results && (
         <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
           <div className="flex items-center justify-between py-8 border-b border-zinc-200 mb-16">
-            <span className="text-xs tracking-widest uppercase font-medium"><img src="/logo-navbar.svg" alt="Valar Audit" style={{ height: '32px' }} /></span>
+            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#111111' }}>Valar Audit</span>
             <button onClick={restart} className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors">
               New assessment
             </button>
@@ -476,7 +476,7 @@ export default function Home() {
       {status === STATUS.ERROR && (
         <div className="min-h-screen flex items-center justify-center px-8">
           <div className="max-w-md text-center">
-            <p className="text-xs tracking-widest uppercase text-zinc-400 mb-4">Error</p>
+            <p className="text-xs tracking-widest uppercase text-zinc-400 mb-4">error</p>
             <p className="text-sm text-zinc-600 mb-8">{errorMsg}</p>
             <button
               onClick={restart}
