@@ -275,7 +275,7 @@ function Landing({ onStart }) {
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
           <button
             onClick={onStart}
-            className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-sm"          >
+            className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-md"          >
             Start free assessment
           </button>
           <span className="text-xs tracking-widest text-zinc-400">5 minutes. No account needed.</span>
