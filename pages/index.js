@@ -164,7 +164,7 @@ function MhraAdvisory({ advisory }) {
 
 function Results({ results, onRestart }) {
   const { riskLevel, regimes, mhraAdvisory } = results;
-  const mainRegimes = regimes.filter(r => r.id !== "dsit");
+  const mainRegimes = regimes.filter(r => r.id !== "dsit" && !(r.id === "mhra" && mhraAdvisory));
   const dsit = regimes.find(r => r.id === "dsit");
 
   return (
