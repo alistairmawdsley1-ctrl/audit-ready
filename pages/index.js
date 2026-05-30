@@ -246,7 +246,7 @@ function Landing({ onStart }) {
     >
       {/* Top bar */}
       <div className="flex items-center justify-between py-8 border-b border-zinc-200">
-        <span className="text-xs tracking-widest uppercase font-medium"><img src="/logo-navbar.svg" alt="Valar Audit" style={{ height: '32px' }} /></span>
+        <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#111111' }}>Valar Audit</span>
         <a
           href="mailto:alistair@mawdsleyadvisory.com"
           className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors"
@@ -416,12 +416,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title><img src="/logo-navbar.svg" alt="Valar Audit" style={{ height: '32px' }} /> — AI Regulatory Compliance</title>
+        <title>Valar Audit — AI Regulatory Compliance</title>
         <meta name="description" content="Know your AI regulatory exposure in 5 minutes. Human-verified citations from ICO, FCA, CMA, MHRA, EHRC, DSIT and the EU AI Act." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Editorial+New:ital,wght@0,200;0,400;1,200&family=Suisse+Int%27l:wght@300;400;500&display=swap" rel="stylesheet" />
       </Head>
 
