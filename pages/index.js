@@ -183,7 +183,9 @@ function Results({ results, onRestart }) {
       </div>
 
       <div>
+         {mhraAdvisory && <MhraAdvisory advisory={mhraAdvisory} />}
         {mainRegimes.map(regime => <RegimeCard key={regime.id} regime={regime} />)}
+        {dsit && <RegimeCard regime={dsit} />}
         {mhraAdvisory && <MhraAdvisory advisory={mhraAdvisory} />}
         {dsit && <RegimeCard regime={dsit} />}
       </div>
