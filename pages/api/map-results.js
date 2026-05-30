@@ -5,7 +5,7 @@
  * No AI involved. Output is sourced entirely from citations.json and mapper.js.
  *
  * POST body:  { slots: { ... } }
- * Response:   { riskLevel: 'low'|'medium'|'high', regimes: [...], slots: { ... } }
+ * Response:   { riskLevel, regimes, slots, mhraAdvisory, mentalHealthEuFlag }
  */
 
 import citations from "../../lib/citations.json";
@@ -23,10 +23,10 @@ export default function handler(req, res) {
   }
 
   try {
-    const regimes = mapSlotsToRegimes(slots, citations);
+    const { regimes, mhraAdvisory, mentalHealthEuFlag } = mapSlotsToRegimes(slots, citations);
     const riskLevel = calculateRiskLevel(slots, regimes);
 
-    return res.status(200).json({ riskLevel, regimes, slots });
+    return res.status(200).json({ riskLevel, regimes, slots, mhraAdvisory, mentalHealthEuFlag });
   } catch (error) {
     console.error("Mapping error:", error?.message ?? error);
     return res.status(500).json({ error: "Failed to generate results. Please try again." });

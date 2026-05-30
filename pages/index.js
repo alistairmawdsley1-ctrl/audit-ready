@@ -145,8 +145,25 @@ function RegimeCard({ regime }) {
   );
 }
 
+function MhraAdvisory({ advisory }) {
+  return (
+    <div className="border-t border-zinc-200 pt-8 pb-8">
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <h3 className="font-medium text-black text-base leading-snug">{advisory.title}</h3>
+        <span className="text-xs tracking-widest uppercase text-amber-600 whitespace-nowrap flex-shrink-0 pt-0.5 font-medium">
+          MHRA
+        </span>
+      </div>
+      <div className="border border-amber-200 bg-amber-50 rounded-sm px-4 py-3">
+        <p className="text-xs tracking-widest uppercase text-amber-700 font-medium mb-2">Advisory note</p>
+        <p className="text-sm text-amber-900 leading-relaxed">{advisory.text}</p>
+      </div>
+    </div>
+  );
+}
+
 function Results({ results, onRestart }) {
-  const { riskLevel, regimes } = results;
+  const { riskLevel, regimes, mhraAdvisory } = results;
   const mainRegimes = regimes.filter(r => r.id !== "dsit");
   const dsit = regimes.find(r => r.id === "dsit");
 
@@ -167,6 +184,7 @@ function Results({ results, onRestart }) {
 
       <div>
         {mainRegimes.map(regime => <RegimeCard key={regime.id} regime={regime} />)}
+        {mhraAdvisory && <MhraAdvisory advisory={mhraAdvisory} />}
         {dsit && <RegimeCard regime={dsit} />}
       </div>
 
@@ -289,7 +307,7 @@ function Landing({ onStart }) {
 
       {/* Footer */}
       <div className="border-t border-zinc-200 py-6 flex items-center justify-between flex-wrap gap-2">
-        <p className="text-xs text-zinc-300 tracking-wide">Regulatory guidance only. Not legal advice. Questions about your results? Contact us.</p>
+        <p className="text-xs text-zinc-300 tracking-wide">Regulatory guidance only. Not legal advice.</p>
         <div className="flex items-center gap-4">
           <a href="/privacy" className="text-xs text-zinc-300 hover:text-black transition-colors">Privacy Notice</a>
           <a href="https://mawdsleyadvisory.com" className="text-xs text-zinc-300 hover:text-black transition-colors">Mawdsley Advisory</a>
