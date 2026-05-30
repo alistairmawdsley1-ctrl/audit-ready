@@ -192,7 +192,7 @@ function Results({ results, onRestart }) {
       <div className="border border-zinc-200 p-6 mb-12">
         <p className="text-xs text-zinc-500 leading-relaxed">
           <span className="font-medium text-zinc-700">Important disclaimer: </span>
-          This output is regulatory guidance based on published frameworks and your self-reported answers. It is not legal advice. The citation store is human-verified against source documents but regulation changes. Always verify obligations against current published guidance from the relevant regulator. If your situation is complex, consult a qualified solicitor or compliance professional.Questions about your results? Contact us at alistair@mawdsleyadvisory.com.
+          This output is regulatory guidance based on published frameworks and your self-reported answers. It is not legal advice. The citation store is human-verified against source documents but regulation changes. Always verify obligations against current published guidance from the relevant regulator. You should consult a qualified solicitor or compliance professional before acting on these results. Questions about your results? Contact us at alistair@mawdsleyadvisory.com.
         </p>
       </div>
 
