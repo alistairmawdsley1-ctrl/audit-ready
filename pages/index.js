@@ -246,7 +246,7 @@ function Landing({ onStart }) {
     >
       {/* Top bar */}
       <div className="flex items-center justify-between py-8 border-b border-zinc-200">
-        <span className="text-xs tracking-widest uppercase font-medium">ValarAudit</span>
+        <span className="text-xs tracking-widest uppercase font-medium"><img src="/logo-navbar.svg" alt="Valar Audit" style={{ height: '32px' }} /></span>
         <a
           href="mailto:alistair@mawdsleyadvisory.com"
           className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors"
@@ -416,7 +416,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>ValarAudit — AI Regulatory Compliance</title>
+        <title><img src="/logo-navbar.svg" alt="Valar Audit" style={{ height: '32px' }} /> — AI Regulatory Compliance</title>
         <meta name="description" content="Know your AI regulatory exposure in 5 minutes. Human-verified citations from ICO, FCA, CMA, MHRA, EHRC, DSIT and the EU AI Act." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -444,7 +444,7 @@ export default function Home() {
       {status === STATUS.ASSESSING && (
         <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
           <div className="flex items-center justify-between py-8 border-b border-zinc-200 mb-16">
-            <span className="text-xs tracking-widest uppercase font-medium">ValarAudit</span>
+            <span className="text-xs tracking-widest uppercase font-medium"><img src="/logo-navbar.svg" alt="Valar Audit" style={{ height: '32px' }} /></span>
             <button onClick={restart} className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors">
               Exit
             </button>
@@ -463,7 +463,7 @@ export default function Home() {
       {status === STATUS.COMPLETE && results && (
         <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
           <div className="flex items-center justify-between py-8 border-b border-zinc-200 mb-16">
-            <span className="text-xs tracking-widest uppercase font-medium">ValarAudit</span>
+            <span className="text-xs tracking-widest uppercase font-medium"><img src="/logo-navbar.svg" alt="Valar Audit" style={{ height: '32px' }} /></span>
             <button onClick={restart} className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors">
               New assessment
             </button>
