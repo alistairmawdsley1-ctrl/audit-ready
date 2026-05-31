@@ -83,7 +83,7 @@ function QuestionCard({ question, onSubmit, isLoading, progress }) {
           className="w-full border-0 border-b border-zinc-300 px-0 py-3 text-base text-black placeholder-zinc-300 focus:outline-none focus:border-black resize-none bg-transparent transition-colors duration-200"
           disabled={isLoading}
         />
-        <div className="flex items-center justify-between mt-8">
+        <div className="flex items-center justify-end mt-8">
           <button
             type="submit"
             disabled={!answer.trim() || isLoading}
