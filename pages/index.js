@@ -249,7 +249,7 @@ function Landing({ onStart }) {
         <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#0789a8' }}>Valar Audit</span>
         <a
           href="mailto:alistair@mawdsleyadvisory.com"
-          className="text-xs tracking-widest text-zinc-700 hover:text-black transition-colors"
+          className="text-xs tracking-widest text-black hover:text-black transition-colors"
         >
           Contact
         </a>
@@ -257,7 +257,7 @@ function Landing({ onStart }) {
 
       {/* Hero */}
       <div className="flex-1 flex flex-col justify-center py-24 max-w-4xl">
-        <p className="text-xs tracking-widest text-zinc-600 mb-8">AI regulatory compliance</p>
+        <p className="text-xs tracking-widest text-zinc-700 mb-8">AI regulatory compliance</p>
 
         <h1
           className="font-normal tracking-tight text-black mb-8 leading-none"
