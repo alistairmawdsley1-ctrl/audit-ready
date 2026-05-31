@@ -260,7 +260,7 @@ function Landing({ onStart }) {
         <p className="text-xs tracking-widest text-zinc-400 mb-8">AI regulatory compliance</p>
 
         <h1
-          className="font-light tracking-tight text-black mb-8 leading-none"
+          className="font-normal tracking-tight text-black mb-8 leading-none"
           style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
         >
           Know your exposure.<br />
