@@ -296,23 +296,6 @@ function Landing({ onStart }) {
         </div>
       </div>
 
-      {/* Regulator row */}
-      <div className="border-t border-zinc-200 pt-4 pb-2">
-        <p className="text-xs tracking-widest text-zinc-500 mb-4 text-center">Regulatory regimes covered</p>
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex items-center gap-6">
-            {["ICO", "FCA", "CMA", "MHRA"].map(r => (
-              <span key={r} className="text-xs tracking-widest uppercase text-zinc-600 whitespace-nowrap">{r}</span>
-            ))}
-          </div>
-          <div className="flex items-center gap-6">
-            {["EHRC", "DSIT", "EU AI Act"].map(r => (
-              <span key={r} className="text-xs tracking-widest uppercase text-zinc-600 whitespace-nowrap">{r}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Footer */}
       <div className="border-t border-zinc-200 py-6 flex items-center justify-between flex-wrap gap-2">
         <p className="text-xs text-zinc-300 tracking-wide">Regulatory guidance only. Not legal advice.</p>
