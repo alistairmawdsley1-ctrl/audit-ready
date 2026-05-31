@@ -249,7 +249,7 @@ function Landing({ onStart }) {
         <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#0789a8' }}>Valar Audit</span>
         <a
           href="mailto:alistair@mawdsleyadvisory.com"
-          className="text-xs tracking-widest text-zinc-400 hover:text-black transition-colors"
+          className="text-xs tracking-widest text-zinc-700 hover:text-black transition-colors"
         >
           Contact
         </a>
@@ -257,7 +257,7 @@ function Landing({ onStart }) {
 
       {/* Hero */}
       <div className="flex-1 flex flex-col justify-center py-24 max-w-4xl">
-        <p className="text-xs tracking-widest text-zinc-400 mb-8">AI regulatory compliance</p>
+        <p className="text-xs tracking-widest text-zinc-600 mb-8">AI regulatory compliance</p>
 
         <h1
           className="font-normal tracking-tight text-black mb-8 leading-none"
@@ -268,7 +268,7 @@ function Landing({ onStart }) {
           find it.
         </h1>
 
-        <p className="text-base text-zinc-500 mb-16 leading-relaxed max-w-xl">
+        <p className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
           Every obligation traced to its source. Not AI opinion or hallucinations. Verified regulatory guidance.
         </p>
 
@@ -278,7 +278,7 @@ function Landing({ onStart }) {
             className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-lg"          >
             Start free assessment
           </button>
-          <span className="text-xs tracking-widest text-zinc-400">5 minutes. No account needed.</span>
+          <span className="text-xs tracking-widest text-zinc-600">5 minutes. No account needed.</span>
         </div>
 
         {/* Three tiles */}
@@ -290,7 +290,7 @@ function Landing({ onStart }) {
           ].map(({ label, desc }) => (
             <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 pr-8">
               <p className="text-xs tracking-widest font-medium text-black mb-2">{label}</p>
-              <p className="text-xs text-zinc-400 leading-relaxed">{desc}</p>
+              <p className="text-xs text-zinc-600 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
