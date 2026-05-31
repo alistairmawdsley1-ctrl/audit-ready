@@ -297,11 +297,13 @@ function Landing({ onStart }) {
       </div>
 
       {/* Regulator row */}
-      <div className="border-t border-zinc-200 py-6 flex flex-wrap items-center gap-6">
-        <span className="text-xs tracking-widest text-zinc-300">covers</span>
-        {["ICO", "FCA", "CMA", "MHRA", "EHRC", "DSIT", "EU AI Act"].map(r => (
-          <span key={r} className="text-xs tracking-widest uppercase text-zinc-400">{r}</span>
-        ))}
+      <div className="border-t border-zinc-200 pt-4 pb-2">
+        <p className="text-xs tracking-widest text-zinc-500 mb-3">regulatory regimes covered</p>
+        <div className="flex flex-nowrap items-center gap-6 overflow-x-auto">
+          {["ICO", "FCA", "CMA", "MHRA", "EHRC", "DSIT", "EU AI Act"].map(r => (
+            <span key={r} className="text-xs tracking-widest uppercase text-zinc-600 whitespace-nowrap">{r}</span>
+          ))}
+        </div>
       </div>
 
       {/* Footer */}
