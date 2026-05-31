@@ -298,8 +298,8 @@ function Landing({ onStart }) {
 
       {/* Regulator row */}
       <div className="border-t border-zinc-200 pt-4 pb-2">
-        <p className="text-xs tracking-widest text-zinc-500 mb-3">regulatory regimes covered</p>
-        <div className="flex flex-nowrap items-center gap-6 overflow-x-auto">
+        <p className="text-xs tracking-widest text-zinc-500 mb-3 text-center">Regulatory regimes covered</p>
+        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
           {["ICO", "FCA", "CMA", "MHRA", "EHRC", "DSIT", "EU AI Act"].map(r => (
             <span key={r} className="text-xs tracking-widest uppercase text-zinc-600 whitespace-nowrap">{r}</span>
           ))}
