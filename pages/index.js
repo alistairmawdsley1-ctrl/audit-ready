@@ -246,7 +246,7 @@ function Landing({ onStart }) {
     >
       {/* Top bar */}
       <div className="flex items-center justify-between py-8 border-b border-zinc-200">
-        <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#111111' }}>Valar Audit</span>
+        <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#0789a8' }}>Valar Audit</span>
         <a
           href="mailto:alistair@mawdsleyadvisory.com"
           className="text-xs tracking-widest text-zinc-400 hover:text-black transition-colors"
@@ -444,7 +444,7 @@ export default function Home() {
       {status === STATUS.ASSESSING && (
         <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
           <div className="flex items-center justify-between py-8 border-b border-zinc-200 mb-16">
-            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#111111' }}>Valar Audit</span>
+            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#0789a8' }}>Valar Audit</span>
             <button onClick={restart} className="text-xs tracking-widest text-zinc-400 hover:text-black transition-colors">
               Exit
             </button>
@@ -463,7 +463,7 @@ export default function Home() {
       {status === STATUS.COMPLETE && results && (
         <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
           <div className="flex items-center justify-between py-8 border-b border-zinc-200 mb-16">
-            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#111111' }}>Valar Audit</span>
+            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#0789a8' }}>Valar Audit</span>
             <button onClick={restart} className="text-xs tracking-widest text-zinc-400 hover:text-black transition-colors">
               New assessment
             </button>
