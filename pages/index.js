@@ -84,7 +84,6 @@ function QuestionCard({ question, onSubmit, isLoading, progress }) {
           disabled={isLoading}
         />
         <div className="flex items-center justify-between mt-8">
-          <p className="text-xs text-zinc-400 tracking-widest">Return to continue</p>
           <button
             type="submit"
             disabled={!answer.trim() || isLoading}
