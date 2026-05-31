@@ -83,7 +83,7 @@ function QuestionCard({ question, onSubmit, isLoading, progress }) {
           className="w-full border-0 border-b border-zinc-300 px-0 py-3 text-base text-black placeholder-zinc-300 focus:outline-none focus:border-black resize-none bg-transparent transition-colors duration-200"
           disabled={isLoading}
         />
-        <div className="flex items-center justify-end mt-8">
+        <div className="flex items-center justify-between mt-8">
           <button
             type="submit"
             disabled={!answer.trim() || isLoading}
@@ -290,6 +290,30 @@ function Landing({ onStart }) {
             <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 pr-8">
               <p className="text-xs tracking-widest font-medium text-black mb-2">{label}</p>
               <p className="text-xs text-zinc-600 leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Regulatory regimes covered */}
+      <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100">
+        <div className="bg-black px-8 py-10">
+          <h2 className="text-3xl font-normal text-white tracking-tight leading-tight mb-2">Regulatory<br />regimes covered</h2>
+          <p className="text-sm text-zinc-400">Seven UK and EU frameworks</p>
+        </div>
+        <div className="bg-zinc-50">
+          {[
+            { name: "ICO", category: "Data & Privacy" },
+            { name: "FCA", category: "Financial Services" },
+            { name: "CMA", category: "Competition" },
+            { name: "MHRA", category: "Medical Devices" },
+            { name: "EHRC", category: "Equality & Rights" },
+            { name: "DSIT", category: "Digital & Technology" },
+            { name: "EU AI Act", category: "AI Regulation" },
+          ].map((r, i, arr) => (
+            <div key={r.name} className={`flex items-center justify-between px-8 py-5 ${i < arr.length - 1 ? "border-b border-zinc-200" : ""}`}>
+              <span className="text-sm font-medium text-black">{r.name}</span>
+              <span className="text-sm text-zinc-400">{r.category}</span>
             </div>
           ))}
         </div>
