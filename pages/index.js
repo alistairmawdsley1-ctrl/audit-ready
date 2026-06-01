@@ -295,8 +295,8 @@ function Landing({ onStart }) {
         </div>
       </div>
 
-      {/* Regulatory regimes covered */}
-      <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl">
+        {/* Regulatory regimes covered */}
+        <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl">
         <div className="bg-black px-8 py-10">
           <h2 className="text-3xl font-normal text-white tracking-tight leading-tight mb-2">Regulatory<br />regimes covered</h2>
           <p className="text-sm text-zinc-400">Seven UK and EU frameworks</p>
@@ -317,6 +317,7 @@ function Landing({ onStart }) {
             </div>
           ))}
         </div>
+      </div>
       </div>
 
       {/* Footer */}
