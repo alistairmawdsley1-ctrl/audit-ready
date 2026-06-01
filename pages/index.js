@@ -268,7 +268,7 @@ function Landing({ onStart }) {
         </h1>
 
         <p className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
-          Every obligation traced to its source. Not AI opinion or hallucinations. Verified regulatory guidance.
+          Assess your use of AI against verified regulatory obligations. Every finding linked directly to its regulatory source, not AI-generated interpretation.
         </p>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
@@ -296,7 +296,7 @@ function Landing({ onStart }) {
       </div>
 
       {/* Regulatory regimes covered */}
-      <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100">
+      <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 -mx-8 md:-mx-16 lg:-mx-24">
         <div className="bg-black px-8 py-10">
           <h2 className="text-3xl font-normal text-white tracking-tight leading-tight mb-2">Regulatory<br />regimes covered</h2>
           <p className="text-sm text-zinc-400">Seven UK and EU frameworks</p>
@@ -312,7 +312,7 @@ function Landing({ onStart }) {
             { name: "EU AI Act", category: "AI Regulation" },
           ].map((r, i, arr) => (
             <div key={r.name} className={`flex items-center justify-between px-8 py-5 ${i < arr.length - 1 ? "border-b border-zinc-200" : ""}`}>
-              <span className="text-sm font-medium text-black">{r.name}</span>
+              <span className="text-sm font-normal text-black">{r.name}</span>
               <span className="text-sm text-zinc-400">{r.category}</span>
             </div>
           ))}
