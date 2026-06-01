@@ -287,7 +287,7 @@ function Landing({ onStart }) {
             { label: "human-verified citations", desc: "Every obligation linked to its source document." },
             { label: "full report £49", desc: "Specific obligations, priority actions, downloadable PDF." },
           ].map(({ label, desc }) => (
-            <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 pr-8">
+            <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 pr-8 pt-10">
               <p className="text-xs tracking-widest font-medium text-black mb-2">{label}</p>
               <p className="text-xs text-zinc-600 leading-relaxed">{desc}</p>
             </div>
@@ -295,8 +295,8 @@ function Landing({ onStart }) {
         </div>
       </div>
 
-        {/* Regulatory regimes covered */}
-        <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl">
+      {/* Regulatory regimes covered */}
+      <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl">
         <div className="bg-black px-8 py-10">
           <h2 className="text-3xl font-normal text-white tracking-tight leading-tight mb-2">Regulatory<br />regimes covered</h2>
           <p className="text-sm text-zinc-400">Seven UK and EU frameworks</p>
@@ -317,7 +317,6 @@ function Landing({ onStart }) {
             </div>
           ))}
         </div>
-      </div>
       </div>
 
       {/* Footer */}
