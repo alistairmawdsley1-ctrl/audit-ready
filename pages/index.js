@@ -287,7 +287,7 @@ function Landing({ onStart }) {
             { label: "human-verified citations", desc: "Every obligation linked to its source document." },
             { label: "full report £49", desc: "Specific obligations, priority actions, downloadable PDF." },
           ].map(({ label, desc }) => (
-            <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 px-8 pt-10 sm:pl-8">
+            <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 px-8 pt-10 sm:pl-10">
               <p className="text-xs tracking-widest font-medium text-black mb-2">{label}</p>
               <p className="text-xs text-zinc-600 leading-relaxed">{desc}</p>
             </div>
