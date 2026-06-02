@@ -314,7 +314,7 @@ function Landing({ onStart }) {
           Assess your use of AI against verified regulatory obligations. Every finding linked directly to its regulatory source, not AI-generated interpretation.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-32">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-48">
           <button
             onClick={onStart}
             className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-300 rounded-lg"
