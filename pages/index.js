@@ -229,39 +229,50 @@ function Results({ results, onRestart }) {
 // ── Landing page ─────────────────────────────────────────────────────────────
 
 function WordReveal() {
-  const words = ["Know your", "exposure.", "Before", "regulators", "find", "it."];
+  const lines = [
+    ["Know", "your", "exposure."],
+    ["Before", "regulators"],
+    ["find", "it."],
+  ];
+  const totalWords = lines.flat().length;
   const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
-    // Start after a short pause, then reveal one word every 220ms
     const timeout = setTimeout(() => {
       let i = 0;
       const interval = setInterval(() => {
         setActiveIndex(i);
         i++;
-        if (i >= words.length) clearInterval(interval);
-      }, 220);
+        if (i >= totalWords) clearInterval(interval);
+      }, 200);
       return () => clearInterval(interval);
     }, 300);
     return () => clearTimeout(timeout);
   }, []);
 
+  let wordIndex = 0;
   return (
     <h1
-      className="font-normal tracking-tight mb-8 leading-none"
+      className="font-normal tracking-tight text-black mb-8 leading-none"
       style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
     >
-      {words.map((word, i) => (
-        <span
-          key={i}
-          style={{
-            color: i <= activeIndex ? "#111111" : "#d4d4d4",
-            transition: "color 0.4s ease",
-            display: i === 2 || i === 4 ? "inline" : "inline",
-            marginRight: i === 2 || i === 4 ? "0" : "0.25em",
-          }}
-        >
-          {word}{i === 1 || i === 3 ? <br /> : " "}
+      {lines.map((lineWords, li) => (
+        <span key={li} className="block">
+          {lineWords.map((word) => {
+            const idx = wordIndex++;
+            return (
+              <span
+                key={idx}
+                style={{
+                  color: idx <= activeIndex ? "#111111" : "#d4d4d4",
+                  transition: "color 0.4s ease",
+                  marginRight: "0.25em",
+                }}
+              >
+                {word}
+              </span>
+            );
+          })}
         </span>
       ))}
     </h1>
