@@ -232,8 +232,8 @@ function Landing({ onStart }) {
   const [scrolled, setScrolled] = useState(false);
   const tilesRef = useRef(null);
   const regimesRef = useRef(null);
-  const tilesInView = useInView(tilesRef, { once: true, margin: "-80px" });
-  const regimesInView = useInView(regimesRef, { once: true, margin: "-80px" });
+  const tilesInView = useInView(tilesRef, { once: true, margin: "-60px" });
+  const regimesInView = useInView(regimesRef, { once: true, margin: "-60px" });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -241,18 +241,36 @@ function Landing({ onStart }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Premium easing — slow start, confident settle
+  const ease = [0.16, 1, 0.3, 1];
+
+  // Clip-reveal for headline lines — text slides up from behind a mask
+  const lineReveal = (delay = 0) => ({
+    initial: { y: "100%", opacity: 0 },
+    animate: { y: "0%", opacity: 1 },
+    transition: { duration: 1.1, ease, delay },
+  });
+
+  // Gentle fade-up for supporting elements
   const fadeUp = (delay = 0) => ({
-    initial: { opacity: 0, y: 24 },
+    initial: { opacity: 0, y: 18 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay },
+    transition: { duration: 1.0, ease, delay },
+  });
+
+  // Subtle scale+fade for CTA
+  const ctaReveal = (delay = 0) => ({
+    initial: { opacity: 0, y: 16, scale: 0.97 },
+    animate: { opacity: 1, y: 0, scale: 1 },
+    transition: { duration: 1.0, ease, delay },
   });
 
   return (
     <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
       {/* Top bar */}
       <div
-        className="flex items-center justify-between py-8 border-b border-zinc-200 sticky top-0 bg-white z-10 transition-shadow duration-300"
-        style={{ boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none" }}
+        className="flex items-center justify-between py-8 border-b border-zinc-200 sticky top-0 bg-white z-10 transition-shadow duration-500"
+        style={{ boxShadow: scrolled ? "0 1px 16px rgba(0,0,0,0.04)" : "none" }}
       >
         <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#0789a8' }}>Valar Audit</span>
         <a
@@ -265,25 +283,35 @@ function Landing({ onStart }) {
 
       {/* Hero */}
       <div className="flex-1 flex flex-col justify-center py-24 max-w-4xl">
-        <motion.p {...fadeUp(0.1)} className="text-xs tracking-widest text-zinc-700 mb-8">AI regulatory compliance</motion.p>
+
+        <motion.p {...fadeUp(0.15)} className="text-xs tracking-widest text-zinc-700 mb-8">
+          AI regulatory compliance
+        </motion.p>
 
         <h1
           className="font-normal tracking-tight text-black mb-8 leading-none"
           style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
         >
-          <motion.span {...fadeUp(0.2)} className="block">Know your exposure.</motion.span>
-          <motion.span {...fadeUp(0.35)} className="block">Before regulators</motion.span>
-          <motion.span {...fadeUp(0.5)} className="block">find it.</motion.span>
+          {/* Clip container for each line */}
+          <span className="block overflow-hidden">
+            <motion.span {...lineReveal(0.25)} className="block">Know your exposure.</motion.span>
+          </span>
+          <span className="block overflow-hidden">
+            <motion.span {...lineReveal(0.45)} className="block">Before regulators</motion.span>
+          </span>
+          <span className="block overflow-hidden">
+            <motion.span {...lineReveal(0.65)} className="block">find it.</motion.span>
+          </span>
         </h1>
 
-        <motion.p {...fadeUp(0.6)} className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
+        <motion.p {...fadeUp(0.9)} className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
           Assess your use of AI against verified regulatory obligations. Every finding linked directly to its regulatory source, not AI-generated interpretation.
         </motion.p>
 
-        <motion.div {...fadeUp(0.7)} className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
+        <motion.div {...ctaReveal(1.05)} className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
           <button
             onClick={onStart}
-            className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-lg"
+            className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-300 rounded-lg"
           >
             Start free assessment
           </button>
@@ -299,9 +327,9 @@ function Landing({ onStart }) {
           ].map(({ label, desc }, i) => (
             <motion.div
               key={label}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={tilesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
+              transition={{ duration: 0.9, ease, delay: i * 0.18 }}
               className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 px-8 pt-10 sm:pl-10"
             >
               <p className="text-xs tracking-widest font-medium text-black mb-2">{label}</p>
@@ -314,9 +342,9 @@ function Landing({ onStart }) {
       {/* Regulatory regimes covered */}
       <motion.div
         ref={regimesRef}
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 32 }}
         animate={regimesInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.9, ease }}
         className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl"
       >
         <div className="bg-black px-8 py-10">
@@ -337,7 +365,7 @@ function Landing({ onStart }) {
               key={r.name}
               initial={{ opacity: 0 }}
               animate={regimesInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.4, delay: 0.2 + i * 0.07 }}
+              transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
               className={`flex items-center justify-between px-8 py-5 ${i < arr.length - 1 ? "border-b border-zinc-200" : ""}`}
             >
               <span className="text-sm font-normal text-black">{r.name}</span>
