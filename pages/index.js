@@ -230,40 +230,12 @@ function Results({ results, onRestart }) {
 
 function Landing({ onStart }) {
   const [scrolled, setScrolled] = useState(false);
-  const tilesRef = useRef(null);
-  const regimesRef = useRef(null);
-  const tilesInView = useInView(tilesRef, { once: true, margin: "-60px" });
-  const regimesInView = useInView(regimesRef, { once: true, margin: "-60px" });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Premium easing — slow start, confident settle
-  const ease = [0.16, 1, 0.3, 1];
-
-  // Clip-reveal for headline lines — text slides up from behind a mask
-  const lineReveal = (delay = 0) => ({
-    initial: { y: "100%", opacity: 0 },
-    animate: { y: "0%", opacity: 1 },
-    transition: { duration: 1.1, ease, delay },
-  });
-
-  // Gentle fade-up for supporting elements
-  const fadeUp = (delay = 0) => ({
-    initial: { opacity: 0, y: 18 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 1.0, ease, delay },
-  });
-
-  // Subtle scale+fade for CTA
-  const ctaReveal = (delay = 0) => ({
-    initial: { opacity: 0, y: 16, scale: 0.97 },
-    animate: { opacity: 1, y: 0, scale: 1 },
-    transition: { duration: 1.0, ease, delay },
-  });
 
   return (
     <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
@@ -283,32 +255,25 @@ function Landing({ onStart }) {
 
       {/* Hero */}
       <div className="flex-1 flex flex-col justify-center py-24 max-w-4xl">
+        <p className="text-xs tracking-widest text-zinc-700 mb-8">AI regulatory compliance</p>
 
-        <motion.p {...fadeUp(0.15)} className="text-xs tracking-widest text-zinc-700 mb-8">
-          AI regulatory compliance
-        </motion.p>
-
-        <h1
+        <motion.h1
           className="font-normal tracking-tight text-black mb-8 leading-none"
           style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         >
-          {/* Clip container for each line */}
-          <span className="block overflow-hidden">
-            <motion.span {...lineReveal(0.25)} className="block">Know your exposure.</motion.span>
-          </span>
-          <span className="block overflow-hidden">
-            <motion.span {...lineReveal(0.45)} className="block">Before regulators</motion.span>
-          </span>
-          <span className="block overflow-hidden">
-            <motion.span {...lineReveal(0.65)} className="block">find it.</motion.span>
-          </span>
-        </h1>
+          Know your exposure.<br />
+          Before regulators<br />
+          find it.
+        </motion.h1>
 
-        <motion.p {...fadeUp(0.9)} className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
+        <p className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
           Assess your use of AI against verified regulatory obligations. Every finding linked directly to its regulatory source, not AI-generated interpretation.
-        </motion.p>
+        </p>
 
-        <motion.div {...ctaReveal(1.05)} className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
           <button
             onClick={onStart}
             className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-300 rounded-lg"
@@ -316,37 +281,25 @@ function Landing({ onStart }) {
             Start free assessment
           </button>
           <span className="text-xs tracking-widest text-zinc-600">5 minutes. No account needed.</span>
-        </motion.div>
+        </div>
 
         {/* Three tiles */}
-        <div ref={tilesRef} className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-t border-zinc-200">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-t border-zinc-200">
           {[
             { label: "free assessment", desc: "Guided questions, one at a time. Instant results." },
             { label: "human-verified citations", desc: "Every obligation linked to its source document." },
             { label: "full report £49", desc: "Specific obligations, priority actions, downloadable PDF." },
-          ].map(({ label, desc }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={tilesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.9, ease, delay: i * 0.18 }}
-              className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 px-8 pt-10 sm:pl-10"
-            >
+          ].map(({ label, desc }) => (
+            <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 px-8 pt-10 sm:pl-10">
               <p className="text-xs tracking-widest font-medium text-black mb-2">{label}</p>
               <p className="text-xs text-zinc-600 leading-relaxed">{desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Regulatory regimes covered */}
-      <motion.div
-        ref={regimesRef}
-        initial={{ opacity: 0, y: 32 }}
-        animate={regimesInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.9, ease }}
-        className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl"
-      >
+      <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl">
         <div className="bg-black px-8 py-10">
           <h2 className="text-3xl font-normal text-white tracking-tight leading-tight mb-2">Regulatory<br />regimes covered</h2>
           <p className="text-sm text-zinc-400">Seven UK and EU frameworks</p>
@@ -361,19 +314,13 @@ function Landing({ onStart }) {
             { name: "DSIT", category: "Digital & Technology" },
             { name: "EU AI Act", category: "AI Regulation" },
           ].map((r, i, arr) => (
-            <motion.div
-              key={r.name}
-              initial={{ opacity: 0 }}
-              animate={regimesInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-              className={`flex items-center justify-between px-8 py-5 ${i < arr.length - 1 ? "border-b border-zinc-200" : ""}`}
-            >
+            <div key={r.name} className={`flex items-center justify-between px-8 py-5 ${i < arr.length - 1 ? "border-b border-zinc-200" : ""}`}>
               <span className="text-sm font-normal text-black">{r.name}</span>
               <span className="text-sm text-zinc-400">{r.category}</span>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* Footer */}
       <div className="border-t border-zinc-200 py-6 flex items-center justify-between flex-wrap gap-2">
