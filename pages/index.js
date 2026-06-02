@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Head from "next/head";
+import { motion, useInView } from "framer-motion";
 
 const STRIPE_LINK = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK || "#";
 
@@ -228,23 +229,31 @@ function Results({ results, onRestart }) {
 // ── Landing page ─────────────────────────────────────────────────────────────
 
 function Landing({ onStart }) {
-  const [visible, setVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const tilesRef = useRef(null);
+  const regimesRef = useRef(null);
+  const tilesInView = useInView(tilesRef, { once: true, margin: "-80px" });
+  const regimesInView = useInView(regimesRef, { once: true, margin: "-80px" });
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(t);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const fadeUp = (delay = 0) => ({
+    initial: { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay },
+  });
+
   return (
-    <div
-      className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24"
-      style={{
-        opacity: visible ? 1 : 0,
-        transition: "opacity 0.8s ease",
-      }}
-    >
+    <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
       {/* Top bar */}
-      <div className="flex items-center justify-between py-8 border-b border-zinc-200">
+      <div
+        className="flex items-center justify-between py-8 border-b border-zinc-200 sticky top-0 bg-white z-10 transition-shadow duration-300"
+        style={{ boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none" }}
+      >
         <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#0789a8' }}>Valar Audit</span>
         <a
           href="mailto:alistair@mawdsleyadvisory.com"
@@ -256,47 +265,60 @@ function Landing({ onStart }) {
 
       {/* Hero */}
       <div className="flex-1 flex flex-col justify-center py-24 max-w-4xl">
-        <p className="text-xs tracking-widest text-zinc-700 mb-8">AI regulatory compliance</p>
+        <motion.p {...fadeUp(0.1)} className="text-xs tracking-widest text-zinc-700 mb-8">AI regulatory compliance</motion.p>
 
         <h1
           className="font-normal tracking-tight text-black mb-8 leading-none"
           style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
         >
-          Know your exposure.<br />
-          Before regulators<br />
-          find it.
+          <motion.span {...fadeUp(0.2)} className="block">Know your exposure.</motion.span>
+          <motion.span {...fadeUp(0.35)} className="block">Before regulators</motion.span>
+          <motion.span {...fadeUp(0.5)} className="block">find it.</motion.span>
         </h1>
 
-        <p className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
+        <motion.p {...fadeUp(0.6)} className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
           Assess your use of AI against verified regulatory obligations. Every finding linked directly to its regulatory source, not AI-generated interpretation.
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
+        <motion.div {...fadeUp(0.7)} className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
           <button
             onClick={onStart}
-            className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-lg"          >
+            className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-lg"
+          >
             Start free assessment
           </button>
           <span className="text-xs tracking-widest text-zinc-600">5 minutes. No account needed.</span>
-        </div>
+        </motion.div>
 
         {/* Three tiles */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-t border-zinc-200">
+        <div ref={tilesRef} className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-t border-zinc-200">
           {[
             { label: "free assessment", desc: "Guided questions, one at a time. Instant results." },
             { label: "human-verified citations", desc: "Every obligation linked to its source document." },
             { label: "full report £49", desc: "Specific obligations, priority actions, downloadable PDF." },
-          ].map(({ label, desc }) => (
-            <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 px-8 pt-10 sm:pl-10">
+          ].map(({ label, desc }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 16 }}
+              animate={tilesInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.12 }}
+              className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 px-8 pt-10 sm:pl-10"
+            >
               <p className="text-xs tracking-widest font-medium text-black mb-2">{label}</p>
               <p className="text-xs text-zinc-600 leading-relaxed">{desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
       {/* Regulatory regimes covered */}
-      <div className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl">
+      <motion.div
+        ref={regimesRef}
+        initial={{ opacity: 0, y: 24 }}
+        animate={regimesInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="rounded-2xl overflow-hidden mb-16 border border-zinc-100 max-w-xl"
+      >
         <div className="bg-black px-8 py-10">
           <h2 className="text-3xl font-normal text-white tracking-tight leading-tight mb-2">Regulatory<br />regimes covered</h2>
           <p className="text-sm text-zinc-400">Seven UK and EU frameworks</p>
@@ -311,13 +333,19 @@ function Landing({ onStart }) {
             { name: "DSIT", category: "Digital & Technology" },
             { name: "EU AI Act", category: "AI Regulation" },
           ].map((r, i, arr) => (
-            <div key={r.name} className={`flex items-center justify-between px-8 py-5 ${i < arr.length - 1 ? "border-b border-zinc-200" : ""}`}>
+            <motion.div
+              key={r.name}
+              initial={{ opacity: 0 }}
+              animate={regimesInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.4, delay: 0.2 + i * 0.07 }}
+              className={`flex items-center justify-between px-8 py-5 ${i < arr.length - 1 ? "border-b border-zinc-200" : ""}`}
+            >
               <span className="text-sm font-normal text-black">{r.name}</span>
               <span className="text-sm text-zinc-400">{r.category}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Footer */}
       <div className="border-t border-zinc-200 py-6 flex items-center justify-between flex-wrap gap-2">
