@@ -229,7 +229,7 @@ function Results({ results, onRestart }) {
 // ── Landing page ─────────────────────────────────────────────────────────────
 
 function WordReveal() {
-  const words = ["Know", "your", "exposure.", "Before", "regulators", "find", "it."];
+  const words = ["Know your", "exposure.", "Before", "regulators", "find", "it."];
   const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
@@ -261,7 +261,7 @@ function WordReveal() {
             marginRight: i === 2 || i === 4 ? "0" : "0.25em",
           }}
         >
-          {word}{i === 2 || i === 4 ? <br /> : " "}
+          {word}{i === 1 || i === 3 ? <br /> : " "}
         </span>
       ))}
     </h1>
