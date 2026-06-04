@@ -280,20 +280,12 @@ function WordReveal() {
 }
 
 function Landing({ onStart }) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
     <div className="min-h-screen flex flex-col px-8 md:px-16 lg:px-24">
       {/* Top bar */}
       <div
-        className="flex items-center justify-between py-8 border-b border-zinc-200 sticky top-0 bg-white z-10 transition-shadow duration-500"
-        style={{ boxShadow: scrolled ? "0 1px 16px rgba(0,0,0,0.04)" : "none" }}
+        className="flex items-center justify-between py-8 border-b border-zinc-200"
       >
         <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '24px', letterSpacing: '-0.5px', color: '#0789a8' }}>Valar Audit</span>
         <a
