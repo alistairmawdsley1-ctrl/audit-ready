@@ -178,7 +178,7 @@ function Results({ results, onRestart }) {
           {regimes.length} regulatory regime{regimes.length !== 1 ? "s" : ""} apply to your deployment.
         </p>
         <p className="text-sm text-zinc-500 leading-relaxed">
-          Every obligation below is traced to its source. This is a free-tier summary. The full report includes specific obligations, priority-ordered actions, and a downloadable PDF.
+          Every obligation below is traced to its source. Book a free 30-minute call to discuss your results and receive a full PDF report.
         </p>
       </div>
 
@@ -189,22 +189,12 @@ function Results({ results, onRestart }) {
       </div>
 
       <div className="border-t border-black mt-12 pt-12 mb-12">
-        <p className="text-xs tracking-widest text-zinc-400 mb-4">full report</p>
-        <p className="text-2xl font-light tracking-tight text-black mb-2">Specific obligations. Exact citations. Priority actions.</p>
+        <p className="text-xs tracking-widest text-zinc-400 mb-4">get your full report</p>
+        <p className="text-2xl font-light tracking-tight text-black mb-2">Talk through your findings. Receive your PDF.</p>
         <p className="text-sm text-zinc-500 mb-8 leading-relaxed">
-          A downloadable PDF with every obligation mapped to its source document, recommended actions in priority order, and a summary you can share with legal counsel or your board.
+          Book a free 30-minute call to discuss your results. We will walk through the obligations that apply to your deployment and send you a full PDF report with priority actions and source citations.
         </p>
-        <a
-          href={STRIPE_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-sm"
-        >
-          Get Full Report — £49
-        </a>
-        <p className="text-xs text-zinc-400 mt-4">
-          Secure payment via Stripe. Report prepared and emailed within 1 business day.
-        </p>
+        <ContactForm />
       </div>
 
       <div className="border border-zinc-200 p-6 mb-12">
@@ -227,6 +217,70 @@ function Results({ results, onRestart }) {
 }
 
 // ── Landing page ─────────────────────────────────────────────────────────────
+
+function ContactForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  async function handleSubmit() {
+    if (!name.trim() || !email.trim()) return;
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <div className="border border-zinc-200 p-6 max-w-md">
+        <p className="text-sm text-black font-medium mb-1">Request received.</p>
+        <p className="text-sm text-zinc-500">We will be in touch within one business day to arrange a time.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-md">
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Your name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          className="w-full border-b border-zinc-300 py-3 text-sm text-black placeholder-zinc-400 focus:outline-none focus:border-black transition-colors bg-transparent"
+        />
+      </div>
+      <div className="mb-8">
+        <input
+          type="email"
+          placeholder="Your email address"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          className="w-full border-b border-zinc-300 py-3 text-sm text-black placeholder-zinc-400 focus:outline-none focus:border-black transition-colors bg-transparent"
+        />
+      </div>
+      <button
+        onClick={handleSubmit}
+        disabled={!name.trim() || !email.trim() || status === "sending"}
+        className="text-xs tracking-widest font-medium bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-colors duration-200 rounded-lg disabled:opacity-30 disabled:cursor-not-allowed"
+      >
+        {status === "sending" ? "sending..." : "book a call"}
+      </button>
+      {status === "error" && (
+        <p className="text-xs text-red-500 mt-4">Something went wrong. Please email alistair@mawdsleyadvisory.com directly.</p>
+      )}
+    </div>
+  );
+}
 
 function WordReveal() {
   const lines = [
@@ -321,7 +375,7 @@ function Landing({ onStart }) {
           {[
             { label: "free assessment", desc: "Guided questions, one at a time. Instant results." },
             { label: "human-verified citations", desc: "Every obligation linked to its source document." },
-            { label: "full report £49", desc: "Specific obligations, priority actions, downloadable PDF." },
+            { label: "full report", desc: "PDF with priority actions and source citations, free with a 30-minute call." },
           ].map(({ label, desc }) => (
             <div key={label} className="border-b sm:border-b-0 sm:border-r border-zinc-200 last:border-0 py-8 px-8 pt-10 sm:pl-10">
               <p className="text-xs tracking-widest font-medium text-black mb-2">{label}</p>
