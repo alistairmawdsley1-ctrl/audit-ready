@@ -162,7 +162,7 @@ function MhraAdvisory({ advisory }) {
   );
 }
 
-function Results({ results, onRestart }) {
+function Results({ results, slots, onRestart }) {
   const { riskLevel, regimes, mhraAdvisory } = results;
   const mainRegimes = regimes.filter(r => r.id !== "dsit" && !(r.id === "mhra" && mhraAdvisory));
   const dsit = regimes.find(r => r.id === "dsit");
@@ -194,7 +194,7 @@ function Results({ results, onRestart }) {
         <p className="text-sm text-zinc-500 mb-8 leading-relaxed">
           Book a free 30-minute call to discuss your results. We will walk through the obligations that apply to your deployment and send you a full PDF report with priority actions and source citations.
         </p>
-        <ContactForm />
+        <ContactForm slots={slots} results={results} />
       </div>
 
       <div className="border border-zinc-200 p-6 mb-12">
@@ -218,7 +218,7 @@ function Results({ results, onRestart }) {
 
 // ── Landing page ─────────────────────────────────────────────────────────────
 
-function ContactForm() {
+function ContactForm({ slots, results }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
@@ -230,7 +230,7 @@ function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ name, email, slots, results }),
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("sent");
@@ -429,6 +429,7 @@ export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState("");
   const [progress, setProgress] = useState(0);
   const [results, setResults] = useState(null);
+  const [slots, setSlots] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
 
   async function startAssessment() {
@@ -500,6 +501,7 @@ export default function Home() {
       });
       if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
+      setSlots(slots);
       setResults(data);
       setStatus(STATUS.COMPLETE);
     } catch (err) {
@@ -573,7 +575,7 @@ export default function Home() {
               New assessment
             </button>
           </div>
-          <Results results={results} onRestart={restart} />
+          <Results results={results} slots={slots} onRestart={restart} />
         </div>
       )}
 
