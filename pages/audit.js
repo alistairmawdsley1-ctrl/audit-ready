@@ -26,7 +26,7 @@ function WordReveal() {
   return (
     <h1
       className="font-normal tracking-tight text-black mb-8 leading-none"
-      style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+      style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontFamily: "inherit" }}
     >
       {lines.map((lineWords, li) => (
         <span key={li} className="block">
@@ -82,7 +82,7 @@ export default function Audit() {
 
           <WordReveal />
 
-          <p className="text-base text-zinc-600 mb-16 leading-relaxed max-w-xl">
+          <p className="text-base text-zinc-700 mb-16 leading-relaxed max-w-xl">
             Not a checklist. A structured audit conducted by an experienced AI governance specialist, with written findings across six dimensions and a prioritised action plan traceable to its regulatory source.
           </p>
 
