@@ -123,7 +123,7 @@ export default function Audit() {
             {/* 04 90-day plan — full width */}
             <div className="sm:col-span-2 bg-zinc-50 rounded-xl p-8 border border-zinc-100">
               <p className="text-xs tracking-widest text-zinc-400 mb-4">04 — 90-day action plan</p>
-              <h3 style={{ fontFamily: ""Plus Jakarta Sans", sans-serif", fontSize: "1.875rem", fontWeight: 400, color: "#111", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "1.5rem" }}>A phased programme your board can act on.</h3>
+              <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '1.875rem', fontWeight: 400, color: '#111', letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: '1.5rem' }}>A phased programme your board can act on.</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {[
                   ["Days 1–30", "Immediate", ["AI usage policy finalised", "Begin DPIA", "AI risk register created"]],
