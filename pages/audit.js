@@ -1,4 +1,55 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
+
+function WordReveal() {
+  const lines = [
+    ["AI", "governance"],
+    ["you", "can", "defend."],
+  ];
+  const totalWords = lines.flat().length;
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      let i = 0;
+      const interval = setInterval(() => {
+        setActiveIndex(i);
+        i++;
+        if (i >= totalWords) clearInterval(interval);
+      }, 260);
+      return () => clearInterval(interval);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  let wordIndex = 0;
+  return (
+    <h1
+      className="font-normal tracking-tight text-black mb-8 leading-none"
+      style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+    >
+      {lines.map((lineWords, li) => (
+        <span key={li} className="block">
+          {lineWords.map((word) => {
+            const idx = wordIndex++;
+            return (
+              <span
+                key={idx}
+                style={{
+                  color: idx <= activeIndex ? "#111111" : "#d4d4d4",
+                  transition: "color 0.4s ease",
+                  marginRight: "0.25em",
+                }}
+              >
+                {word}
+              </span>
+            );
+          })}
+        </span>
+      ))}
+    </h1>
+  );
+}
 
 export default function Audit() {
   return (
@@ -29,12 +80,7 @@ export default function Audit() {
         <div className="flex-1 flex flex-col justify-center py-24 max-w-4xl">
           <p className="text-xs tracking-widest text-zinc-600 mb-8">AI regulatory compliance</p>
 
-          <h1
-            className="font-normal tracking-tight text-black mb-8 leading-none"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
-          >
-            Deploy with confidence.
-          </h1>
+          <WordReveal />
 
           <p className="text-base text-zinc-600 mb-16 leading-relaxed max-w-xl">
             Not a checklist. A structured audit conducted by an experienced AI governance specialist, with written findings across six dimensions and a prioritised action plan traceable to its regulatory source.
