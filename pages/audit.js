@@ -37,7 +37,7 @@ export default function Audit() {
           </h1>
 
           <p className="text-base text-zinc-600 mb-16 leading-relaxed max-w-xl">
-            The full audit gives you the documentation, the evidence, and the plan to show regulators, investors, and your board that you have done this properly.
+            Not a checklist. A structured audit conducted by an experienced AI governance specialist, with written findings across six dimensions and a prioritised action plan traceable to its regulatory source.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-24">
@@ -68,29 +68,40 @@ export default function Audit() {
             </div>
 
             {/* 02 Audit report */}
-            <div className="bg-zinc-50 rounded-xl p-8 border border-zinc-100">
+            <div className="bg-zinc-100 rounded-xl p-8 border border-zinc-200">
               <p className="text-xs tracking-widest text-zinc-400 mb-4">02 — audit report</p>
               <h3 className="text-lg font-normal text-black mb-3 leading-snug">Six-section written assessment.</h3>
               <p className="text-sm text-zinc-500 leading-relaxed mb-6">Findings, auditor commentary, and RAG risk rating across every dimension.</p>
-              <div className="bg-white rounded-lg border border-zinc-100 overflow-hidden">
+              <div className="rounded-xl overflow-hidden" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)", background: "#fff" }}>
+                <div className="px-5 py-3 border-b border-zinc-100 flex items-center justify-between">
+                  <span className="text-xs font-medium tracking-widest text-zinc-400">Section</span>
+                  <span className="text-xs font-medium tracking-widest text-zinc-400">Risk level</span>
+                </div>
                 {[
-                  ["Data & compliance", "HIGH", "text-red-700", "bg-red-50"],
-                  ["Risk & governance", "HIGH", "text-red-700", "bg-red-50"],
-                  ["Current AI use", "MEDIUM", "text-amber-700", "bg-amber-50"],
-                  ["People & culture", "MEDIUM", "text-amber-700", "bg-amber-50"],
-                  ["Business context", "LOW", "text-green-700", "bg-green-50"],
-                  ["Opportunity", "LOW", "text-green-700", "bg-green-50"],
-                ].map(([label, risk, textColor, bgColor], i, arr) => (
-                  <div key={label} className={`flex items-center justify-between px-4 py-3 ${i < arr.length - 1 ? "border-b border-zinc-100" : ""}`}>
-                    <span className="text-xs text-zinc-500">{label}</span>
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded ${textColor} ${bgColor}`}>{risk}</span>
-                  </div>
-                ))}
+                  ["Data & compliance", "HIGH"],
+                  ["Risk & governance", "HIGH"],
+                  ["Current AI use", "MEDIUM"],
+                  ["People & culture", "MEDIUM"],
+                  ["Business context", "LOW"],
+                  ["Opportunity", "LOW"],
+                ].map(([label, risk], i, arr) => {
+                  const pill = {
+                    HIGH:   { text: "text-red-600",   bg: "bg-red-50",    border: "border-red-100"   },
+                    MEDIUM: { text: "text-amber-600",  bg: "bg-amber-50",  border: "border-amber-100" },
+                    LOW:    { text: "text-emerald-600", bg: "bg-emerald-50", border: "border-emerald-100" },
+                  }[risk];
+                  return (
+                    <div key={label} className={`flex items-center justify-between px-5 py-3.5 ${i < arr.length - 1 ? "border-b border-zinc-50" : ""}`}>
+                      <span className="text-sm text-zinc-600">{label}</span>
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${pill.text} ${pill.bg} ${pill.border}`}>{risk}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
             {/* 03 Priority recommendations */}
-            <div className="bg-zinc-50 rounded-xl p-8 border border-zinc-100">
+            <div className="bg-zinc-100 rounded-xl p-8 border border-zinc-200">
               <p className="text-xs tracking-widest text-zinc-400 mb-4">03 — priority recommendations</p>
               <h3 className="text-lg font-normal text-black mb-3 leading-snug">Ranked. Specific. Traceable.</h3>
               <p className="text-sm text-zinc-500 leading-relaxed mb-6">Every obligation linked to its source document. Not generic advice.</p>
@@ -119,7 +130,7 @@ export default function Audit() {
                   ["Days 31–60", "Build foundations", ["Complete and sign off DPIA", "Review insurance coverage", "Mandatory staff briefings"]],
                   ["Days 61–90", "Embed and progress", ["External pilot go/no-go", "Board AI subcommittee", "Next AI project scoped"]],
                 ].map(([period, label, items]) => (
-                  <div key={period} className="bg-white rounded-lg border border-zinc-100 p-5">
+                  <div key={period} className="bg-zinc-50 rounded-lg border border-zinc-200 p-5">
                     <p className="text-xs tracking-widest mb-1" style={{ color: '#0789a8' }}>{period}</p>
                     <p className="text-sm font-medium text-black mb-3">{label}</p>
                     {items.map(item => (
