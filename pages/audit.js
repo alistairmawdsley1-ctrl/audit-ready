@@ -56,7 +56,7 @@ export default function Audit() {
             {/* 01 Discovery interview — full width, black */}
             <div className="sm:col-span-2 bg-black rounded-xl p-8">
               <p className="text-xs tracking-widest text-zinc-500 mb-4">01 — discovery interview</p>
-              <h3 className="text-xl font-normal text-white mb-3 leading-snug">A structured 60-minute conversation.</h3>
+              <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "1.875rem", fontWeight: 400, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "1rem" }}>A structured 60-minute conversation.</h3>
               <p className="text-sm text-zinc-400 leading-relaxed mb-6 max-w-lg">
                 We cover your AI deployment, data practices, governance maturity, and regulatory exposure. The questions your legal team should be asking.
               </p>
@@ -70,7 +70,7 @@ export default function Audit() {
             {/* 02 Audit report */}
             <div className="bg-zinc-100 rounded-xl p-8 border border-zinc-200">
               <p className="text-xs tracking-widest text-zinc-400 mb-4">02 — audit report</p>
-              <h3 className="text-lg font-normal text-black mb-3 leading-snug">Six-section written assessment.</h3>
+              <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "1.875rem", fontWeight: 400, color: "#111", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "1rem" }}>Six-section written assessment.</h3>
               <p className="text-sm text-zinc-500 leading-relaxed mb-6">Findings, auditor commentary, and RAG risk rating across every dimension.</p>
               <div className="rounded-xl overflow-hidden" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)", background: "#fff" }}>
                 <div className="px-5 py-3 border-b border-zinc-100 flex items-center justify-between">
@@ -103,7 +103,7 @@ export default function Audit() {
             {/* 03 Priority recommendations */}
             <div className="bg-zinc-100 rounded-xl p-8 border border-zinc-200">
               <p className="text-xs tracking-widest text-zinc-400 mb-4">03 — priority recommendations</p>
-              <h3 className="text-lg font-normal text-black mb-3 leading-snug">Ranked. Specific. Traceable.</h3>
+              <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "1.875rem", fontWeight: 400, color: "#111", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "1rem" }}>Ranked. Specific. Traceable.</h3>
               <p className="text-sm text-zinc-500 leading-relaxed mb-6">Every obligation linked to its source document. Not generic advice.</p>
               <div className="flex flex-col gap-3">
                 {[
@@ -123,7 +123,7 @@ export default function Audit() {
             {/* 04 90-day plan — full width */}
             <div className="sm:col-span-2 bg-zinc-50 rounded-xl p-8 border border-zinc-100">
               <p className="text-xs tracking-widest text-zinc-400 mb-4">04 — 90-day action plan</p>
-              <h3 className="text-lg font-normal text-black mb-6 leading-snug">A phased programme your board can act on.</h3>
+              <h3 style={{ fontFamily: ""Plus Jakarta Sans", sans-serif", fontSize: "1.875rem", fontWeight: 400, color: "#111", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "1.5rem" }}>A phased programme your board can act on.</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {[
                   ["Days 1–30", "Immediate", ["AI usage policy finalised", "Begin DPIA", "AI risk register created"]],
